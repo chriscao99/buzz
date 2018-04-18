@@ -2,7 +2,7 @@
 import tweepy
 import sys
 import pandas as pnds 
-# import numpys as nump
+import numpy as nump
 
 #Imports for visualizations
 from IPython.display import display
@@ -10,7 +10,7 @@ import matplotlib.pyplot as plot
 import seaborn as sbn 
 from twittercreds import * #Gets our Twitter credentials
 
-
+#Uses Twitter credentials to set up Tweepy in order to access tweets
 def api_setup():
 
     auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
@@ -35,6 +35,17 @@ for one in tweets:
 #Prints the last 10 tweets using Pandas 
 nicer_tweets = pnds.DataFrame(data = [tweet.text for tweet in tweets], columns=["Last 10 Tweets"])
 print("Displayed in a nicer way: \n")
+display(nicer_tweets.head(10))
+print()
+
+#Adds columns for favs (likes) and RTs
+likes = []
+for tweet in tweets:
+    likes.append(tweet.favorite_count)
+nicer_tweets['Likes'] = likes
+
+nicer_tweets['Retweets'] = nump.array([tweet.retweet_count for tweet in tweets])
+
 display(nicer_tweets.head(10))
 print()
 
