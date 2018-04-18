@@ -91,3 +91,18 @@ percent /= 100
 pie_chart = pnds.Series(percent, index=sources, name='Sources')
 pie_chart.plot.pie(fontsize=11, autopct='%.2f', figsize=(6, 6))
 
+#Sentiment analysis portion
+from textblob import TextBlob
+import re
+
+def extractTweet(tweet):
+    return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
+
+def negOrpos(tweet):
+    tweetAlone = TextBlob(extractTweet(tweet))
+    if tweetAlone.sentiment.polarity > 0:
+        return 1 #positive
+    elif tweetAlone.sentiment.polarity == 0:
+        return 0 #neutral
+    else:
+        return -1 #negative
