@@ -20,11 +20,14 @@ def api_setup():
 
     return api
 
+twitterAPI = api_setup()
 
+tweets  = twitterAPI.user_timeline(screen_name="realDonaldTrump", count=10)
 
+print("Number of tweets received: {}".format(len(tweets)) + "\n")
 
-
-
-
-
+print("Latest 10 tweets: \n")
+for one in tweets:
+    tweet_text = one.text
+    print(tweet_text + "\n")
 
