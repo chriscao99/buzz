@@ -38,13 +38,14 @@ print("Displayed in a nicer way: \n")
 display(nicer_tweets.head(10))
 print()
 
-#Adds columns for favs (likes) and RTs
+#Adds columns for favs (likes) and RTs, as well as date
 likes = []
 for tweet in tweets:
     likes.append(tweet.favorite_count)
 nicer_tweets['Likes'] = likes
 
 nicer_tweets['Retweets'] = nump.array([tweet.retweet_count for tweet in tweets])
+nicer_tweets['Date'] = nump.array([tweet.created_at for tweet in tweets])
 
 display(nicer_tweets.head(10))
 print()
@@ -59,5 +60,8 @@ mostLikesTweet = nicer_tweets['Last 10 Tweets'][mostLikesIndex]
 print("That tweet was: {}".format(mostLikesTweet))
 print()
 
-
+#Displays likes over time as a Series using pandas
+likesTrend = pnds.Series(data=nicer_tweets['Likes'].values, index=nicer_tweets['Date'])
+likesTrend.plot(figsize=(16, 4), color = 'r')
+print(likesTrend.to_string)
 
