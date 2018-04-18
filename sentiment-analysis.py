@@ -38,7 +38,7 @@ print("Displayed in a nicer way: \n")
 display(nicer_tweets.head(10))
 print()
 
-#Adds columns for favs (likes) and RTs, as well as date
+#Adds columns for favs (likes) and RTs, as well as date and source
 likes = []
 for tweet in tweets:
     likes.append(tweet.favorite_count)
@@ -46,6 +46,7 @@ nicer_tweets['Likes'] = likes
 
 nicer_tweets['Retweets'] = nump.array([tweet.retweet_count for tweet in tweets])
 nicer_tweets['Date'] = nump.array([tweet.created_at for tweet in tweets])
+nicer_tweets['Source'] = nump.array([tweet.source for tweet in tweets])
 
 display(nicer_tweets.head(10))
 print()
@@ -64,4 +65,29 @@ print()
 likesTrend = pnds.Series(data=nicer_tweets['Likes'].values, index=nicer_tweets['Date'])
 likesTrend.plot(figsize=(16, 4), color = 'r')
 print(likesTrend.to_string)
+
+#Testing pie chart
+
+sources = []
+for source in nicer_tweets['Source']:
+    if source not in sources:
+        sources.append(source)
+
+# We print sources list:
+print("Creation of content sources:")
+for source in sources:
+    print("* {}".format(source))
+
+percent = nump.zeros(len(sources))
+
+for source in nicer_tweets['Source']:
+    for index in range(len(sources)):
+        if source == sources[index]:
+            percent[index] += 1
+            pass
+
+percent /= 100
+
+pie_chart = pnds.Series(percent, index=sources, name='Sources')
+pie_chart.plot.pie(fontsize=11, autopct='%.2f', figsize=(6, 6))
 
