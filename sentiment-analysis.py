@@ -106,3 +106,7 @@ def negOrpos(tweet):
         return 0 #neutral
     else:
         return -1 #negative
+
+nicer_tweets['Sentiment Analysis'] = nump.array([negOrpos(tweet) for tweet in nicer_tweets['Last 10 Tweets']])
+
+display(nicer_tweets.head(10))
