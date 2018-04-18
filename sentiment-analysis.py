@@ -22,12 +22,21 @@ def api_setup():
 
 twitterAPI = api_setup()
 
-tweets  = twitterAPI.user_timeline(screen_name="realDonaldTrump", count=10)
+tweets  = twitterAPI.user_timeline(screen_name="chriscao99", count=10)
 
+
+#Prints the last 10 tweets
 print("Number of tweets received: {}".format(len(tweets)) + "\n")
-
 print("Latest 10 tweets: \n")
 for one in tweets:
     tweet_text = one.text
     print(tweet_text + "\n")
+
+#Prints the last 10 tweets using Pandas 
+nicer_tweets = pnds.DataFrame(data = [tweet.text for tweet in tweets], columns=["Last 10 Tweets"])
+print("Displayed in a nicer way: \n")
+display(nicer_tweets.head(10))
+print()
+
+
 
