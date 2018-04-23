@@ -22,7 +22,9 @@ def api_setup():
 
 twitterAPI = api_setup()
 
-tweets  = twitterAPI.user_timeline(screen_name="realDonaldTrump", count=10)
+user = input("Enter Twitter Handle (Ex. @chriscao99): ")
+
+tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
 
 
 #Prints the last 10 tweets
@@ -118,3 +120,4 @@ neg = [ tweet for index, tweet in enumerate(nicer_tweets['Last 10 Tweets']) if n
 print("Percentage of positive tweets: {}%".format(len(pos)*100/len(nicer_tweets['Last 10 Tweets'])))
 print("Percentage of neutral tweets: {}%".format(len(neutral)*100/len(nicer_tweets['Last 10 Tweets'])))
 print("Percentage de negative tweets: {}%".format(len(neg)*100/len(nicer_tweets['Last 10 Tweets'])))
+print()
