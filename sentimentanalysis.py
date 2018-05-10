@@ -42,7 +42,7 @@ def takeHandle(handle, context):
     i = 0
     for one in tweets:
         tweet_text = one.text
-        last10[i] = tweet.text
+        last10[i] = tweet_text
         i += 1
 
     print("successfully populated dictionary")
