@@ -446,13 +446,7 @@ def _block(arrays, max_depth, result_ndim):
             # type(arrays) is not list
             return atleast_nd(arrays, result_ndim)
 
-    try:
-        return block_recursion(arrays)
-    finally:
-        # recursive closures have a cyclic reference to themselves, which
-        # requires gc to collect (gh-10620). To avoid this problem, for
-        # performance and PyPy friendliness, we break the cycle:
-        block_recursion = None
+    return block_recursion(arrays)
 
 
 def block(arrays):

@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/christophercao/Documents/Python/Buzz/virt"
+set -gx VIRTUAL_ENV "/Users/christophercao/Documents/Python/dpdc/lambda-packs/Pandas_numpy/source/virt"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

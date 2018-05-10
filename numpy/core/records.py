@@ -38,7 +38,6 @@ from __future__ import division, absolute_import, print_function
 
 import sys
 import os
-import warnings
 
 from . import numeric as sb
 from . import numerictypes as nt
@@ -224,14 +223,10 @@ class record(nt.void):
     __module__ = 'numpy'
 
     def __repr__(self):
-        if get_printoptions()['legacy'] == '1.13':
-            return self.__str__()
-        return super(record, self).__repr__()
+        return self.__str__()
 
     def __str__(self):
-        if get_printoptions()['legacy'] == '1.13':
-            return str(self.item())
-        return super(record, self).__str__()
+        return str(self.item())
 
     def __getattribute__(self, attr):
         if attr in ['setfield', 'getfield', 'dtype']:
@@ -676,40 +671,26 @@ def fromrecords(recList, dtype=None, shape=None, formats=None, names=None,
     else:
         descr = format_parser(formats, names, titles, aligned, byteorder)._descr
 
-    # deprecated back-compat block for numpy 1.14, to be removed in a later
-    # release. This converts list-of-list input to list-of-tuples in some
-    # cases, as done in numpy <= 1.13. In the future we will require tuples.
-    if (isinstance(recList, list) and len(recList) > 0
-            and isinstance(recList[0], list) and len(recList[0]) > 0
-            and not isinstance(recList[0][0], (list, tuple))):
+    try:
+        retval = sb.array(recList, dtype=descr)
+    except TypeError:  # list of lists instead of list of tuples
+        if (shape is None or shape == 0):
+            shape = len(recList)
+        if isinstance(shape, (int, long)):
+            shape = (shape,)
+        if len(shape) > 1:
+            raise ValueError("Can only deal with 1-d array.")
+        _array = recarray(shape, descr)
+        for k in range(_array.size):
+            _array[k] = tuple(recList[k])
+        return _array
+    else:
+        if shape is not None and retval.shape != shape:
+            retval.shape = shape
 
-        try: 
-            memoryview(recList[0][0]) 
-        except:
-            if (shape is None or shape == 0):
-                shape = len(recList)
-            if isinstance(shape, (int, long)):
-                shape = (shape,)
-            if len(shape) > 1:
-                raise ValueError("Can only deal with 1-d array.")
-            _array = recarray(shape, descr)
-            for k in range(_array.size):
-                _array[k] = tuple(recList[k])
-            # list of lists instead of list of tuples ?
-            # 2018-02-07, 1.14.1
-            warnings.warn(
-                "fromrecords expected a list of tuples, may have received a "
-                "list of lists instead. In the future that will raise an error",
-                FutureWarning, stacklevel=2)
-            return _array
-        else:
-            pass
+    res = retval.view(recarray)
 
-    retval = sb.array(recList, dtype=descr)
-    if shape is not None and retval.shape != shape:
-        retval.shape = shape
-
-    return retval.view(recarray)
+    return res
 
 
 def fromstring(datastring, dtype=None, shape=None, offset=0, formats=None,

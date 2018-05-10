@@ -1208,7 +1208,7 @@ def union1d(ar1, ar2):
     numpy.union1d : Equivalent function for ndarrays.
 
     """
-    return unique(ma.concatenate((ar1, ar2), axis=None))
+    return unique(ma.concatenate((ar1, ar2)))
 
 
 def setdiff1d(ar1, ar2, assume_unique=False):
