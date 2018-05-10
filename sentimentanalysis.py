@@ -34,13 +34,18 @@ def takeHandle(handle, context):
 
     tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
 
-
+    #use a dictionary
+    last10 = {}
     #Prints the last 10 tweets
     print("Number of tweets received: {}".format(len(tweets)) + "\n")
     print("Latest 10 tweets: \n")
+    i = 0
     for one in tweets:
         tweet_text = one.text
-        print(tweet_text + "\n")
+        last10[0] = tweet_text
+        i += 1
+    
+    return last10
 
     # REST OF CODE GOES HERE
 
