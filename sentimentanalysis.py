@@ -30,7 +30,7 @@ def takeHandle(handle, context):
     """
     THIS IS THE SECTION OF CODE LAMBDA RUNS
     """
-    user = handle.user
+    user = handle
     twitterAPI = api_setup()
 
     # user = input("Enter Twitter Handle (Ex. @chriscao99): ")
