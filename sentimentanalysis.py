@@ -71,7 +71,8 @@ def percentages(rating):
         if last10[tweet] == rating:
             count += 1
     
-    return count / 20
+    print(count)
+    return count / 20.0
 
 
 if __name__ == "__main__":
