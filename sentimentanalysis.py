@@ -28,7 +28,7 @@ last10 = {}
 
 def takeHandle(handle, context):
     """
-    THIS IS THE SECTION OF CODE YOUR LAMBDA RUNS
+    THIS IS THE SECTION OF CODE LAMBDA RUNS
     """
     user = handle
     twitterAPI = api_setup()
@@ -37,9 +37,6 @@ def takeHandle(handle, context):
 
     tweets  = twitterAPI.user_timeline(screen_name=user, count=20)
 
-    #Prints the last 10 tweets
-    # print("Number of tweets received xD: {}".format(len(tweets)) + "\n")
-    # print("Latest 10 tweets: \n")
     i = 1
 
     for one in tweets:
@@ -47,13 +44,14 @@ def takeHandle(handle, context):
         last10[i] = negOrpos(extractTweet(tweet_text))
         i += 1
 
-    print("successfully populated dictionary")
+    last10[pos] = percentages(1)
+    last10[neg] = percentages(-1)
+    last10[ntrl] = percentages(0)
+    print("Successfully populated dictionary")
+
     return last10
 
 #Sentiment analysis portion
-
-def extractTweet(tweet):
-    return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
 
 def negOrpos(tweet):
     tweetAlone = TextBlob(extractTweet(tweet))
@@ -63,6 +61,18 @@ def negOrpos(tweet):
         return 0 #neutral
     else:
         return -1 #negative
+
+def extractTweet(tweet):
+    return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
+
+def percentages(rating):
+    count = 0
+    for tweet in last10:
+        if last10[tweet] == rating:
+            count += 1
+    
+    return count / 20
+
 
 if __name__ == "__main__":
     """
