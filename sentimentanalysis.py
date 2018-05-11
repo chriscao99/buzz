@@ -12,7 +12,6 @@ import re
 # from IPython.display import display
 # import matplotlib.pyplot as plot
 # import seaborn as sbn
-from twittercreds import * #Gets our Twitter credentials
 
 #Uses Twitter credentials to set up Tweepy in order to access tweets
 def api_setup():
