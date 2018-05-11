@@ -66,12 +66,9 @@ def percentages(rating):
 
 def populateDict(tweets):
 
-    i = 1
-
     for one in tweets:
         tweet_text = one.text
-        last10[i] = negOrpos(extractTweet(tweet_text))
-        i += 1
+        last10[tweet_text] = negOrpos(extractTweet(tweet_text))
 
     last10['pos'] = percentages(1)
     last10['neg'] = percentages(-1)
