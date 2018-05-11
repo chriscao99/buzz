@@ -88,21 +88,6 @@ if __name__ == "__main__":
 
 
 
-
-
-# #Adds columns for favs (likes) and RTs, as well as date and source
-# likes = []
-# for tweet in tweets:
-#     likes.append(tweet.favorite_count)
-# nicer_tweets['Likes'] = likes
-
-# nicer_tweets['Retweets'] = ar([tweet.retweet_count for tweet in tweets])
-# nicer_tweets['Date'] = ar([tweet.created_at for tweet in tweets])
-# nicer_tweets['Source'] = ar([tweet.source for tweet in tweets])
-
-# display(nicer_tweets.head(10))
-# print()
-
 # #Includes data on most liked tweet
 # print()
 # mostLikes = mx(nicer_tweets['Likes'])
