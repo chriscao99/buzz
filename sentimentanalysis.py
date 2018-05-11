@@ -48,7 +48,6 @@ def takeHandle(handle, context):
 
     print("successfully populated dictionary")
     return last10
-    # REST OF CODE GOES HERE
 
 #Sentiment analysis portion
 
