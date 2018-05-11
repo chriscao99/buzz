@@ -87,17 +87,6 @@ if __name__ == "__main__":
 
 
 
-
-# #Includes data on most liked tweet
-# print()
-# mostLikes = mx(nicer_tweets['Likes'])
-# print("Most likes on any of the last 10 tweets is: {}".format(mostLikes))
-# print()
-# mostLikesIndex = nicer_tweets[nicer_tweets.Likes == mostLikes].index[0]
-# mostLikesTweet = nicer_tweets['Last 10 Tweets'][mostLikesIndex]
-# print("That tweet was: {}".format(mostLikesTweet))
-# print()
-
 # #Displays likes over time as a Series using pandas
 # likesTrend = srs(data=nicer_tweets['Likes'].values, index=nicer_tweets['Date'])
 # likesTrend.plot(figsize=(16, 4), color = 'r')
