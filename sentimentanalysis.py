@@ -86,42 +86,6 @@ if __name__ == "__main__":
     takeHandle(None, None)
 
 
-
-# #Displays likes over time as a Series using pandas
-# likesTrend = srs(data=nicer_tweets['Likes'].values, index=nicer_tweets['Date'])
-# likesTrend.plot(figsize=(16, 4), color = 'r')
-# print(likesTrend.to_string)
-
-# #Testing pie chart
-
-# sources = []
-# for source in nicer_tweets['Source']:
-#     if source not in sources:
-#         sources.append(source)
-
-# # We print sources list:
-# print("Creation of content sources:")
-# for source in sources:
-#     print("* {}".format(source))
-
-# percent = zrs(len(sources))
-
-# for source in nicer_tweets['Source']:
-#     for index in range(len(sources)):
-#         if source == sources[index]:
-#             percent[index] += 1
-#             pass
-
-# percent /= 100
-
-# pie_chart = srs(percent, index=sources, name='Sources')
-# pie_chart.plot.pie(fontsize=11, autopct='%.2f', figsize=(6, 6))
-
-
-# nicer_tweets['Sentiment Analysis'] = ar([negOrpos(tweet) for tweet in nicer_tweets['Last 10 Tweets']])
-
-# display(nicer_tweets.head(10))
-
 # pos = [ tweet for index, tweet in enumerate(nicer_tweets['Last 10 Tweets']) if nicer_tweets['Sentiment Analysis'][index] > 0]
 # neutral = [ tweet for index, tweet in enumerate(nicer_tweets['Last 10 Tweets']) if nicer_tweets['Sentiment Analysis'][index] == 0]
 # neg = [ tweet for index, tweet in enumerate(nicer_tweets['Last 10 Tweets']) if nicer_tweets['Sentiment Analysis'][index] < 0]
