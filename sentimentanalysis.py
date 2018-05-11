@@ -44,9 +44,9 @@ def takeHandle(handle, context):
         last10[i] = negOrpos(extractTweet(tweet_text))
         i += 1
 
-    last10[pos] = percentages(1)
-    last10[neg] = percentages(-1)
-    last10[ntrl] = percentages(0)
+    last10['pos'] = percentages(1)
+    last10['neg'] = percentages(-1)
+    last10['ntrl'] = percentages(0)
     print("Successfully populated dictionary")
 
     return last10
