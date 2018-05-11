@@ -89,11 +89,6 @@ if __name__ == "__main__":
 
 
 
-# #Prints the last 10 tweets using Pandas
-# nicer_tweets = df(data = [tweet.text for tweet in tweets], columns=["Last 10 Tweets"])
-# print("Displayed in a nicer way: \n")
-# display(nicer_tweets.head(10))
-# print()
 
 # #Adds columns for favs (likes) and RTs, as well as date and source
 # likes = []
