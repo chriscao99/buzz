@@ -30,7 +30,7 @@ def takeHandle(handle, context):
     """
     THIS IS THE SECTION OF CODE LAMBDA RUNS
     """
-    user = handle
+    user = handle['user']
     twitterAPI = api_setup()
 
     # user = input("Enter Twitter Handle (Ex. @chriscao99): ")
@@ -38,7 +38,7 @@ def takeHandle(handle, context):
     tweets  = twitterAPI.user_timeline(screen_name=user, count=20)
 
     populateDict(tweets)
-
+    print(user)
     return last10
 
 #Sentiment analysis portion
