@@ -35,15 +35,16 @@ def takeHandle(handle, context):
 
     # user = input("Enter Twitter Handle (Ex. @chriscao99): ")
 
-    tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
+    tweets  = twitterAPI.user_timeline(screen_name=user, count=20)
 
     #Prints the last 10 tweets
     # print("Number of tweets received xD: {}".format(len(tweets)) + "\n")
     # print("Latest 10 tweets: \n")
-    i = 0
+    i = 1
+
     for one in tweets:
         tweet_text = one.text
-        last10[i] = extractTweet(tweet_text)
+        last10[i] = negOrpos(extractTweet(tweet_text))
         i += 1
 
     print("successfully populated dictionary")
