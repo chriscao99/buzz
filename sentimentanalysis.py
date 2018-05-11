@@ -5,7 +5,8 @@ import sys
 from pandas import DataFrame as df
 from pandas import Series as srs
 import numpy
-
+from textblob import TextBlob
+import re
 
 #Imports for visualizations
 # from IPython.display import display
@@ -23,6 +24,8 @@ def api_setup():
 
     return api
 
+last10 = {}
+
 def takeHandle(handle, context):
     """
     THIS IS THE SECTION OF CODE YOUR LAMBDA RUNS
@@ -34,20 +37,32 @@ def takeHandle(handle, context):
 
     tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
 
-    #testing using dictionary
-    last10 = {}
     #Prints the last 10 tweets
-    print("Number of tweets received xD: {}".format(len(tweets)) + "\n")
-    print("Latest 10 tweets: \n")
+    # print("Number of tweets received xD: {}".format(len(tweets)) + "\n")
+    # print("Latest 10 tweets: \n")
     i = 0
     for one in tweets:
         tweet_text = one.text
-        last10[i] = tweet_text
+        last10[i] = extractTweet(tweet_text)
         i += 1
 
     print("successfully populated dictionary")
     return last10
     # REST OF CODE GOES HERE
+
+#Sentiment analysis portion
+
+def extractTweet(tweet):
+    return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
+
+def negOrpos(tweet):
+    tweetAlone = TextBlob(extractTweet(tweet))
+    if tweetAlone.sentiment.polarity > 0:
+        return 1 #positive
+    elif tweetAlone.sentiment.polarity == 0:
+        return 0 #neutral
+    else:
+        return -1 #negative
 
 if __name__ == "__main__":
     """
@@ -118,21 +133,6 @@ if __name__ == "__main__":
 # pie_chart = srs(percent, index=sources, name='Sources')
 # pie_chart.plot.pie(fontsize=11, autopct='%.2f', figsize=(6, 6))
 
-# #Sentiment analysis portion
-# from textblob import TextBlob
-# import re
-
-# def extractTweet(tweet):
-#     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
-
-# def negOrpos(tweet):
-#     tweetAlone = TextBlob(extractTweet(tweet))
-#     if tweetAlone.sentiment.polarity > 0:
-#         return 1 #positive
-#     elif tweetAlone.sentiment.polarity == 0:
-#         return 0 #neutral
-#     else:
-#         return -1 #negative
 
 # nicer_tweets['Sentiment Analysis'] = ar([negOrpos(tweet) for tweet in nicer_tweets['Last 10 Tweets']])
 
