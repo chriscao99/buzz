@@ -1,21 +1,286 @@
 <html>
 
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-        <link rel="stylesheet" type="text/css" href="./form.css">
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+        <!-- <link rel="stylesheet" type="text/css" href="./form.css"> -->
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> -->
+        <!-- <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        <br> <br> <br> <br> <br> 
         <title>Buzz</title>
         <h1>Welcome to Buzz</h1>
+        
+        <style>
+
+            h1 {
+            text-align: center;
+                font-size: 60px;
+                font-family: "Roboto";
+            }
+            p {
+                text-align: center;
+                color: #000000;
+                font-size: 14px;
+                font-family: "Roboto";
+            }
+            h4 {
+                color: #000000;
+                text-align: center;
+                letter-spacing: 0.5px;
+                transform: scale(0);
+                transition: all 0.3s;
+                position: relative;
+                top: -25px;
+                margin: 0;
+                font-weight: normal;
+            }
+            h4.show {
+                animation: alert 0.18s ease-in-out;
+                animation-fill-mode: forwards;
+            }
+            @keyframes alert {
+                0%{
+                transform: scale(0);
+                }
+                80% {
+                transform: scale(1.2);
+                }
+                100% {
+                transform: scale(1);
+                }
+            }
+            form {
+                transition: all 0.15s;
+            }
+            form.explode {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+            html {
+                padding-top: 100px;
+            }
+            form {
+                width: 36px;
+                height: 36px;
+                margin: 0 auto;
+                display: block;
+                box-sizing: border-box;
+                position: relative;
+            }
+            input[type="submit"]{
+                display: none !important;
+            }
+            input {
+                width: 100%;
+            }
+            input {
+                background: none;
+                border: 3px solid #000000;
+                border-radius: 26px;
+                box-sizing: border-box;
+                padding: 5px 15px 7px;
+                font-size: 14px;
+                color: #000000;
+                z-index: 2;
+                position: relative;
+            }
+            input:focus {
+                outline: none;
+            }
+            .after {
+                width: 36px;
+                height: 36px;
+                position: absolute;
+                top: 1px;
+                right: 0;
+                z-index: 1;
+            }
+            form.open .after {
+            cursor: pointer;
+            }
+            .after:before,
+            .after:after {
+                content: '';
+                width: 13px;
+                height: 3px;
+                background-color: #000000;
+                border-radius: 3px;
+                position: absolute;
+                transform-origin: 100% 100%;
+            }
+            .after:after{
+                bottom: -3px;
+                right: -3px;
+                transform: rotate(45deg);
+            }
+            .after:before {
+                top: -3px;
+                right: -3px;
+                transform: rotate(-45deg);
+                opacity: 0;
+            }
+            form,
+            form .after,
+            form .after:before,
+            form .after:after {
+                animation-duration: 1.1s;
+                animation-fill-mode: forwards;
+            }
+            form.in {
+                animation-name: expand;
+            }
+            form.in .after:before {
+                animation-name: beforemagic;
+            }
+            form.in .after:after {
+                animation-name: aftermagic;
+            }
+            
+            form.close,
+            form.close .after,
+            form.close .after:before,
+            form.close .after:after {
+                animation-direction: reverse;
+            }
+            form.close {
+                animation-name: expand;
+            }
+            form.close .after:before {
+                animation-name: beforemagic;
+            }
+            form.close .after:after {
+                animation-name: aftermagic;
+            }
+            
+            /* Hold final focused state
+            ****************************/
+            form.open {
+                width: 250px;
+                color: #000000;
+            }
+            form.open .after {
+                z-index: 3;
+            }
+            form.open .after:before {
+                width: 20px;
+                top: 9px;
+                right: 13px;
+                opacity: 1;
+            }
+            form.open .after:after {
+                width: 20px;
+                bottom: 10px;
+                right: 15px;
+            }
+            
+            @keyframes aftermagic {
+                0%   {}
+                10% {
+                width: 24px;
+                bottom: -10px;
+                right: -10px;
+                }
+                15%{
+                opacity: 1;
+                }
+                35% {
+                width: 13px;
+                bottom: -3px;
+                right: -3px;
+                opacity: 0;
+                
+                }
+                25% {
+                opacity: 0;
+                }
+                64% {
+                opacity: 0;
+                }
+                65% {
+                opacity: 1;
+                width: 13px;
+                bottom: -2px;
+                right: -3px;
+                }
+                75% {
+                width: 30px;
+                bottom: 4px;
+                right: 10px;
+                }
+                90% {
+                width: 20px;
+                bottom: 10px;
+                right: 15px;
+                }
+                100% {
+                width: 20px;
+                bottom: 10px;
+                right: 15px;
+                }
+            }
+            @keyframes beforemagic {
+                0%   {}
+                50% {
+                opacity: 0;
+                }
+                55% {
+                opacity: 1;
+                width: 13px;
+                top: -4px;
+                right: -3px;
+                }
+                65% {
+                width: 30px;
+                top: 6px;
+                right: 10px;
+                }
+                80% {
+                width: 20px;
+                top: 9px;
+                right: 13px;
+                }
+                100% {
+                width: 20px;
+                top: 9px;
+                right: 13px;
+                opacity: 1;
+                }
+            }
+            @keyframes expand {
+                0%   {
+                    color: transparent;
+                }
+                20% {
+                width: 36px;
+                }
+                45% {
+                width: 250px;
+                }
+                99% {
+                color: transparent;
+                }
+                100% {
+                    width: 250px;
+                    color: #000000;
+                }
+            }
+              </style>
+          
     </head>
 
     <body background="blue.jpg">
 
-        <form action="sentiment-analysis.py" method="POST">
-            Enter Twitter handle: <br>
-            <input type="text" name="handle"> <br>
-            <br>
-            <input type="submit" value="Submit">
+        <form>
+            <input type="text" />
+            <div class="after"></div>
+            <input type="submit" />
         </form>
+            <h4>&nbsp;</h4>
+            <p>Click search, Enter to submit</p>
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script  src="index.js"></script>
 
     </body>    
 </html>
