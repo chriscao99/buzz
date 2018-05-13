@@ -25,7 +25,7 @@ a.on('click', function(e){
 
 f.submit(function(e){
   e.preventDefault();
-  m.html('hehe xD').addClass('show');
+  m.html(s.val()).addClass('show');
   f.addClass('explode');
   setTimeout(function(){
     s.val('');
