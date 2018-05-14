@@ -26,7 +26,7 @@ a.on('click', function(e){
 
 var API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
 f.submit(function(e){
-
+  p.html('');
   $.ajax({
     type: 'POST',
     url: API,
@@ -38,7 +38,6 @@ f.submit(function(e){
       m.append('<b> Positive: ' + data.pos + '%, ');
       m.append('Negative: ' + data.neg + '%, ');
       m.append('Neutral: ' + data.ntrl + '%</b>');
-      p.removeClass('show');
     }
 
   });
@@ -50,6 +49,6 @@ f.submit(function(e){
     s.val('');
     f.removeClass('explode');
     m.html('&nbsp;').removeClass('show');
-    p.addClass('show');
+    p.html('Click to enter a Twitter handle, Enter to submit');
   }, 10000);
 });
