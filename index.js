@@ -33,7 +33,7 @@ f.submit(function(e){
     contentType: "application/json",
 
     success: function(data){
-      m.html(data).addClass('show');
+      m.html(data.pos).addClass('show');
     }
 
   });
