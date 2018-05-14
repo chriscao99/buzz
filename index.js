@@ -52,3 +52,34 @@ f.submit(function(e){
     p.html('Click to enter a Twitter handle, Enter to submit');
   }, 10000);
 });
+
+Highcharts.chart('chart', {
+  chart: {
+      type: 'pie',
+      options3d: {
+          enabled: true,
+          alpha: 45
+      }
+  },
+  title: {
+      text: 'Contents of Highsoft\'s weekly fruit delivery'
+  },
+  subtitle: {
+      text: '3D donut in Highcharts'
+  },
+  plotOptions: {
+      pie: {
+          innerSize: 100,
+          depth: 45,
+          colors: ['#30FA5E', '#F42C2C', '#959393']
+      }
+  },
+  series: [{
+      name: 'Percentage of Tweets',
+      data: [
+          ['Positive', 60],
+          ['Negative', 30],
+          ['Neutral', 10]
+      ]
+  }]
+});
