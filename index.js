@@ -53,7 +53,7 @@ f.submit(function(e){
   }, 10000);
 });
 
-Highcharts.chart('chart', {
+Highcharts.chart('container', {
   chart: {
       type: 'pie',
       options3d: {
