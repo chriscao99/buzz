@@ -66,7 +66,7 @@ def percentages(rating):
             count += 1
     
     print(count)
-    return count / 20.0
+    return (count / 20.0)*100
 
 def populateDict(tweets):
 
