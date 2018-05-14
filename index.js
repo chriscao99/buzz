@@ -3,6 +3,7 @@ var s = $('input'),
     a = $('.after'),
     m = $('h4');
     p = $('p');
+    chart = document.getElementById('container');
 
 s.focus(function(){
   if( f.hasClass('open') ) return;
@@ -62,11 +63,11 @@ Highcharts.chart('container', {
       }
   },
   title: {
-      text: 'Contents of Highsoft\'s weekly fruit delivery'
+      text: 'Sentiment of user\'s tweets'
   },
-  subtitle: {
-      text: '3D donut in Highcharts'
-  },
+  // subtitle: {
+  //     text: '3D donut in Highcharts'
+  // },
   plotOptions: {
       pie: {
           innerSize: 100,
