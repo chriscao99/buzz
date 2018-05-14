@@ -1,7 +1,8 @@
 var s = $('input'),
     f  = $('form'),
     a = $('.after'),
-		m = $('h4');
+    m = $('h4');
+    p = $('p');
 
 s.focus(function(){
   if( f.hasClass('open') ) return;
@@ -33,22 +34,22 @@ f.submit(function(e){
     contentType: "application/json",
 
     success: function(data){
+      m.addClass('show');
       m.append('<b> Positive: ' + data.pos + '%, ');
       m.append('Negative: ' + data.neg + '%, ');
       m.append('Neutral: ' + data.ntrl + '%</b>');
-      m.addClass('show');
-      // m.html(data.pos).addClass('show');
+      p.removeClass('show');
     }
 
   });
 
   e.preventDefault();
-  // m.html(s.val()).addClass('show');
   f.addClass('explode');
 
   setTimeout(function(){
     s.val('');
     f.removeClass('explode');
     m.html('&nbsp;').removeClass('show');
+    p.addClass('show');
   }, 10000);
 });
