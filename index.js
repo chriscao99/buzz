@@ -21,15 +21,30 @@ a.on('click', function(e){
   setTimeout(function(){
     f.removeClass('close');
   }, 1300);
-})
+});
 
+var API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
 f.submit(function(e){
+
+  $.ajax({
+    type: 'POST',
+    url: API,
+    data: JSON.stringify({"user":s.val()}),
+    contentType: "application/json",
+
+    success: function(data){
+      m.html(data).addClass('show');
+    }
+
+  });
+
   e.preventDefault();
-  m.html(s.val()).addClass('show');
+  // m.html(s.val()).addClass('show');
   f.addClass('explode');
+
   setTimeout(function(){
     s.val('');
     f.removeClass('explode');
     m.removeClass('show');
   }, 3000);
-})
+});
