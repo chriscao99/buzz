@@ -33,9 +33,9 @@ f.submit(function(e){
     contentType: "application/json",
 
     success: function(data){
-      m.append('<b> Positive: ' + data.pos + ', ');
-      m.append('Negative: ' + data.neg + ', ');
-      m.append('Neutral: ' + data.ntrl + '</b>');
+      m.append('<b> Positive: ' + data.pos + '%, ');
+      m.append('Negative: ' + data.neg + '%, ');
+      m.append('Neutral: ' + data.ntrl + '%</b>');
       m.addClass('show');
       // m.html(data.pos).addClass('show');
     }
