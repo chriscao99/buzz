@@ -33,7 +33,11 @@ f.submit(function(e){
     contentType: "application/json",
 
     success: function(data){
-      m.html(data.pos).addClass('show');
+      m.append('<b> Positive: ' + data.pos + ', ');
+      m.append('Negative: ' + data.neg + ', ');
+      m.append('Neutral: ' + data.ntrl + '</b>');
+      m.addClass('show');
+      // m.html(data.pos).addClass('show');
     }
 
   });
@@ -45,6 +49,6 @@ f.submit(function(e){
   setTimeout(function(){
     s.val('');
     f.removeClass('explode');
-    m.removeClass('show');
-  }, 3000);
+    m.html('&nbsp;').removeClass('show');
+  }, 10000);
 });
