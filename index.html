@@ -37,6 +37,9 @@
                 animation: alert 0.18s ease-in-out;
                 animation-fill-mode: forwards;
             }
+            #container.hide {
+                display:none;
+            }
             @keyframes alert {
                 0%{
                 transform: scale(0);
@@ -171,7 +174,12 @@
                 bottom: 10px;
                 right: 15px;
             }
-            
+            .hidden {
+                visibility: hidden;
+                overflow: hidden;
+                width: 0px;
+                height: 0px;
+            }
             @keyframes aftermagic {
                 0%   {}
                 10% {
@@ -269,6 +277,8 @@
 
     <body background="blue.jpg">
         <br> <br>
+        <div id="container" style="height:330px; margin: auto; width: 500px;" class="hide"></div>
+
         <form>
             <input type="text" />
             <div class="after"></div>
@@ -284,7 +294,6 @@
             <script src="https://code.highcharts.com/highcharts-3d.js"></script>
             <script src="https://code.highcharts.com/modules/exporting.js"></script>
             <script src="https://code.highcharts.com/modules/export-data.js"></script>
-            <div id="container" style="height: 400px; margin: auto; width: 500px;"></div>
 
 
             <script src="index.js"></script>
