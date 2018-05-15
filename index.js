@@ -35,7 +35,8 @@ f.submit(function(e){
     contentType: "application/json",
 
     success: function(data){
-      window.location.href = "index.html";
+      // globalvar.user = s.val();
+      window.location.href = "user.html?user=" + s.val();
       //displayGraph(data.pos, data.neg, data.ntrl);
       // m.addClass('show');
       // m.append('<b> Positive: ' + data.pos + '%, ');
