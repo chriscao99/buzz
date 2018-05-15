@@ -35,7 +35,8 @@ f.submit(function(e){
     contentType: "application/json",
 
     success: function(data){
-      displayGraph(data.pos, data.neg, data.ntrl);
+      window.location.href = "index.html";
+      //displayGraph(data.pos, data.neg, data.ntrl);
       // m.addClass('show');
       // m.append('<b> Positive: ' + data.pos + '%, ');
       // m.append('Negative: ' + data.neg + '%, ');
