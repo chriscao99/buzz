@@ -1,7 +1,7 @@
 var s = $('input'),
     f  = $('form'),
     a = $('.after'),
-    m = $('h4');
+    m = $('h4'),
     p = $('p');
     chart = document.getElementById('container');
 

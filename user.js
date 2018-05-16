@@ -1,11 +1,12 @@
-var chart = document.getElementById('container');
-var API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
+var m = $('h1'),
+    chart = document.getElementById('container'),
+    API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
+
 window.onload = function() {
     var url = document.location.href,
-    user = url.split('=')[1].split('&'),
-    data = {}, tmp;
+    user = url.split('=')[1].split('&');
     document.title = user;
-    display(user);
+    display(user[0]);
 }
 
 function display(user) {
@@ -17,11 +18,12 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
+        console.log('success');
       // globalvar.user = s.val();
-      displayGraph(data.pos, data.neg, data.ntrl);
+        displayGraph(data.pos, data.neg, data.ntrl);
       //displayGraph(data.pos, data.neg, data.ntrl);
       // m.addClass('show');
-      // m.append('<b> Positive: ' + data.pos + '%, ');
+      // 
       // m.append('Negative: ' + data.neg + '%, ');
       // m.append('Neutral: ' + data.ntrl + '%</b>');
     }
