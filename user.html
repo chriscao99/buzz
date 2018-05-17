@@ -2,38 +2,81 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-        <br> <br>
         <style>
-
-            h1 {
-                color: #333333;
-                text-align: center;
-                letter-spacing: 0.5px;
-                position: relative;
-                top: 30px;
-                margin: 0;
-                font-weight: bold;
-                font-size: 30px;
-
+            @font-face {
+                font-family: TimeBurner;
+                src: url(timeburnerbold.ttf);
             }
-            h1.show {
-                
-                position:absolute;
+            a {
+                font-family: TimeBurner;
+                text-decoration: none;
+                color: #333333;
+                letter-spacing: 0.5px;
+                margin: 0;
+                font-size: 60px;
+
             }
             #container.hide {
                 display:none;
             }
-            html {
-                padding-top: 100px;
+            .search-container {
+                width: 300px;
+                display: block;
+                margin: 0 auto;
+            }
+            input#search-bar{
+                margin: 0 auto;
+                width: 100%;
+                height: 45px;
+                padding: 0 20px;
+                font-size: 1rem;
+                border: 1px solid #D0CFCE;
+                outline: none; 
+            }
+            input#search-bar:focus {
+                border: 1px solid #008ABF;
+                transition: 0.35s ease;
+                color: #008ABF;
+            }
+            input#search-bar:focus::-webkit-input-placeholder {
+                transition: opacity 0.45s ease;
+                opacity: 0;
+            }
+            input#search-bar:focus::-moz-placeholder {
+                transition: opacity 0.45s ease;
+                opacity: 0;
+            }
+            input#search-bar:focus:-ms-placeholder {
+                transition: opacity 0.45s ease;
+                opacity: 0;
+            }
+            .search-icon{
+                position: relative;
+                float: right;
+                width: 75px;
+                height: 75px;
+                top: -60px;
+                right: -15px;
             }
             
-              </style>
+        </style>
           
     </head>
 
     <body>
+        <header>
+            <div class='header'>
+                <div id="logo">
+                    <a href="index.html">buzz</a>
+                </div>
+                <form class="search-container" action="user.html" method="GET">
+                    <input type="text" name="user" id="search-bar" placeholder="Search for another user">
+                    <img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+                </form>
+
+            </div>
+        </header>
         <br> <br>
         <div id="container" style="height:330px; margin: auto; width: 500px;" class="hide"></div>
 
