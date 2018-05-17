@@ -18,8 +18,6 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
-        console.log('success');
-      // globalvar.user = s.val();
         displayGraph(data.pos, data.neg, data.ntrl);
       //displayGraph(data.pos, data.neg, data.ntrl);
       // m.addClass('show');
@@ -32,9 +30,9 @@ function display(user) {
 
   //e.preventDefault();
 
-  setTimeout(function(){
-    hideGraph();
-  }, 20000);
+//   setTimeout(function(){
+//     hideGraph();
+//   }, 20000);
 };
 
 function displayGraph(pos, neg, ntrl) {
