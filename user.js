@@ -1,16 +1,16 @@
 var m = $('h1'),
     chart = document.getElementById('container'),
     API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
-
+    handle = ''
 window.onload = function() {
     var url = document.location.href,
     user = url.split('=')[1].split('&');
-    document.title = user;
-    display(user[0]);
+    handle = user[0];
+    document.title = handle;
+    display(handle);
 }
 
 function display(user) {
-
  $.ajax({
     type: 'POST',
     url: API,
@@ -46,7 +46,7 @@ function displayGraph(pos, neg, ntrl) {
           }
       },
       title: {
-          text: 'Sentiment of user\'s tweets'
+          text: 'Sentiment of ' + handle + '\'s tweets'
       },
       credits: {
           enabled: false
