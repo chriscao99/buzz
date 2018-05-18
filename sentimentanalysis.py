@@ -62,20 +62,24 @@ def populateDict(tweets):
     pos_count = 0
     ntrl_count = 0
     neg_count = 0
+    total_counted = 0.0
 
     for one in tweets:
         tweet_text = one.text
         rating = negOrpos(extractTweet(tweet_text))
         if rating == 1:
             pos_count += 1
-        else if rating == 0:
+            total_counted += 1.0
+        elif rating == 0:
             ntrl_count += 1
-        else:
+            total_counted += 1.0
+        elif rating == -1:
             neg_count += 1
+            total_counted += 1.0
 
-    last10['pos'] = (pos_count / 10.0)*100
-    last10['neg'] = (ntrl_count / 10.0)*100
-    last10['ntrl'] = (neg_count / 10.0)*100
+    last10['pos'] = (pos_count / total_counted)*100
+    last10['neg'] = (ntrl_count / total_counted)*100
+    last10['ntrl'] = (neg_count / total_counted)*100
 
 if __name__ == "__main__":
     """
