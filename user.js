@@ -18,7 +18,7 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
-        displayGraph(data.pos, data.neg, data.ntrl);
+        displayGraph(data.user_pos, data.user_neg, data.user_ntrl);
       //displayGraph(data.pos, data.neg, data.ntrl);
       // m.addClass('show');
       // 

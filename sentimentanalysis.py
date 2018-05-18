@@ -77,9 +77,9 @@ def populateDict(tweets):
             neg_count += 1
             total_counted += 1.0
 
-    last10['pos'] = (pos_count / total_counted)*100
-    last10['neg'] = (neg_count / total_counted)*100
-    last10['ntrl'] = (ntrl_count / total_counted)*100
+    last10['user_pos'] = (pos_count / total_counted)*100
+    last10['user_neg'] = (neg_count / total_counted)*100
+    last10['user_ntrl'] = (ntrl_count / total_counted)*100
 
 if __name__ == "__main__":
     """
