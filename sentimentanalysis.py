@@ -106,6 +106,7 @@ def populateDictExt(ext):
     if total_counted == 0.0:
         data['valid'] = -1
     else:
+        data['valid'] = 1
         data['ext_pos'] = (pos_count / total_counted)*100
         data['ext_neg'] = (neg_count / total_counted)*100
         data['ext_ntrl'] = (ntrl_count / total_counted)*100
