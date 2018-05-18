@@ -48,9 +48,9 @@ function displayGraph(pos, neg, ntrl) {
       title: {
           text: 'Sentiment of user\'s tweets'
       },
-      // subtitle: {
-      //     text: '3D donut in Highcharts'
-      // },
+      credits: {
+          enabled: false
+      },
       plotOptions: {
           pie: {
               innerSize: 100,
