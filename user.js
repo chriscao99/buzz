@@ -1,5 +1,6 @@
 var m = $('h1'),
-    chart = document.getElementById('container'),
+    user_chart = document.getElementById('user_container'),
+    ext_chart = document.getElementById('ext_container'),
     API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
     handle = ''
 window.onload = function() {
@@ -18,12 +19,10 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
-        displayGraph(data.user_pos, data.user_neg, data.user_ntrl);
-      //displayGraph(data.pos, data.neg, data.ntrl);
-      // m.addClass('show');
-      // 
-      // m.append('Negative: ' + data.neg + '%, ');
-      // m.append('Neutral: ' + data.ntrl + '%</b>');
+        displayUserGraph(data.user_pos, data.user_neg, data.user_ntrl);
+        if (data.valid == 1) {
+            displayExtGraph(data.ext_pos, data.ext_neg, data.ext_ntrl);
+        }
     }
 
   });
@@ -35,9 +34,9 @@ function display(user) {
 //   }, 20000);
 };
 
-function displayGraph(pos, neg, ntrl) {
-    showGraph();
-    Highcharts.chart('container', {
+function displayUserGraph(pos, neg, ntrl) {
+    showUserGraph();
+    Highcharts.chart('user_container', {
       chart: {
           type: 'pie',
           options3d: {
@@ -68,11 +67,51 @@ function displayGraph(pos, neg, ntrl) {
       }]
     });
   }
-
-  function hideGraph() {
-    chart.style.display = "none";
+  function displayExtGraph(pos, neg, ntrl) {
+    showExtGraph();
+    Highcharts.chart('ext_container', {
+      chart: {
+          type: 'pie',
+          options3d: {
+              enabled: true,
+              alpha: 45
+          }
+      },
+      title: {
+          text: 'Sentiment of tweets about ' + handle
+      },
+      credits: {
+          enabled: false
+      },
+      plotOptions: {
+          pie: {
+              innerSize: 100,
+              depth: 45,
+              colors: ['#30FA5E', '#F42C2C', '#959393']
+          }
+      },
+      series: [{
+          name: 'Percentage of Tweets',
+          data: [
+              ['Positive', pos],
+              ['Negative', neg],
+              ['Neutral', ntrl]
+          ]
+      }]
+    });
+  }
+  function hideUserGraph() {
+    user_chart.style.display = "none";
+    
   }
   
-  function showGraph() {
-    chart.style.display = "block";
+  function showUserGraph() {
+    user_chart.style.display = "block";
+  }
+
+  function hideExtGraph() {
+    ext_chart.style.display = "none";
+  }
+  function showExtGraph() {
+    ext_chart.style.display = "block";
   }

@@ -89,40 +89,31 @@ def populateDictExt(ext):
     pos_count = 0
     ntrl_count = 0
     neg_count = 0
-    total_counted = 0.0
+    total_counted = 0
 
     for one in ext:
         tweet_text = one.text
         rating = negOrpos(extractTweet(tweet_text))
         if rating == 1:
             pos_count += 1
-            total_counted += 1.0
+            total_counted += 1
         elif rating == 0:
             ntrl_count += 1
-            total_counted += 1.0
+            total_counted += 1
         elif rating == -1:
             neg_count += 1
-            total_counted += 1.0
+            total_counted += 1
+
     if total_counted == 0.0:
         data['valid'] = -1
     else:
         data['valid'] = 1
-        data['ext_pos'] = (pos_count / total_counted)*100
-        data['ext_neg'] = (neg_count / total_counted)*100
-        data['ext_ntrl'] = (ntrl_count / total_counted)*100
+        data['ext_pos'] = (pos_count / float(total_counted))*100
+        data['ext_neg'] = (neg_count / float(total_counted))*100
+        data['ext_ntrl'] = (ntrl_count / float(total_counted))*100
 
 if __name__ == "__main__":
     """
     THIS IS HOW YOU RUN LOCALLY
     """
     takeHandle(None, None)
-
-
-# pos = [ tweet for index, tweet in enumerate(nicer_tweets['Last 10 Tweets']) if nicer_tweets['Sentiment Analysis'][index] > 0]
-# neutral = [ tweet for index, tweet in enumerate(nicer_tweets['Last 10 Tweets']) if nicer_tweets['Sentiment Analysis'][index] == 0]
-# neg = [ tweet for index, tweet in enumerate(nicer_tweets['Last 10 Tweets']) if nicer_tweets['Sentiment Analysis'][index] < 0]
-
-# print("Percentage of positive tweets: {}%".format(len(pos)*100/len(nicer_tweets['Last 10 Tweets'])))
-# print("Percentage of neutral tweets: {}%".format(len(neutral)*100/len(nicer_tweets['Last 10 Tweets'])))
-# print("Percentage de negative tweets: {}%".format(len(neg)*100/len(nicer_tweets['Last 10 Tweets'])))
-# print()
