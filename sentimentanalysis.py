@@ -42,7 +42,6 @@ def takeHandle(handle, context):
     tweets  = twitterAPI.user_timeline(screen_name=user, count=20)
 
     populateDict(tweets)
-    print(user)
     return last10
 
 #Sentiment analysis portion
@@ -69,8 +68,6 @@ def percentages(rating):
     return (count / 20.0)*100
 
 def populateDict(tweets):
-
-    i = 1
 
     for one in tweets:
         tweet_text = one.text
