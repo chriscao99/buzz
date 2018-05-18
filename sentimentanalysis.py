@@ -28,7 +28,7 @@ def api_setup():
 
     return api
 
-last10 = {}
+data = {}
 
 def takeHandle(handle, context):
     """
@@ -41,8 +41,12 @@ def takeHandle(handle, context):
 
     tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
 
-    populateDict(tweets)
-    return last10
+    external = twitterAPI.search(q=user, rpp=20, count=50)
+
+    populateDictUser(tweets)
+    populateDictExt(external)
+
+    return data
 
 #Sentiment analysis portion
 
@@ -58,7 +62,7 @@ def negOrpos(tweet):
 def extractTweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
 
-def populateDict(tweets):
+def populateDictUser(tweets):
     pos_count = 0
     ntrl_count = 0
     neg_count = 0
@@ -77,9 +81,32 @@ def populateDict(tweets):
             neg_count += 1
             total_counted += 1.0
 
-    last10['user_pos'] = (pos_count / total_counted)*100
-    last10['user_neg'] = (neg_count / total_counted)*100
-    last10['user_ntrl'] = (ntrl_count / total_counted)*100
+    data['user_pos'] = (pos_count / total_counted)*100
+    data['user_neg'] = (neg_count / total_counted)*100
+    data['user_ntrl'] = (ntrl_count / total_counted)*100
+
+def populateDictExt(ext):
+    pos_count = 0
+    ntrl_count = 0
+    neg_count = 0
+    total_counted = 0.0
+
+    for one in ext:
+        tweet_text = one.text
+        rating = negOrpos(extractTweet(tweet_text))
+        if rating == 1:
+            pos_count += 1
+            total_counted += 1.0
+        elif rating == 0:
+            ntrl_count += 1
+            total_counted += 1.0
+        elif rating == -1:
+            neg_count += 1
+            total_counted += 1.0
+
+    data['ext_pos'] = (pos_count / total_counted)*100
+    data['ext_neg'] = (neg_count / total_counted)*100
+    data['ext_ntrl'] = (ntrl_count / total_counted)*100
 
 if __name__ == "__main__":
     """
