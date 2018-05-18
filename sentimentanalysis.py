@@ -103,10 +103,12 @@ def populateDictExt(ext):
         elif rating == -1:
             neg_count += 1
             total_counted += 1.0
-
-    data['ext_pos'] = (pos_count / total_counted)*100
-    data['ext_neg'] = (neg_count / total_counted)*100
-    data['ext_ntrl'] = (ntrl_count / total_counted)*100
+    if total_counted == 0.0:
+        data['valid'] = -1
+    else:
+        data['ext_pos'] = (pos_count / total_counted)*100
+        data['ext_neg'] = (neg_count / total_counted)*100
+        data['ext_ntrl'] = (ntrl_count / total_counted)*100
 
 if __name__ == "__main__":
     """
