@@ -39,7 +39,7 @@ def takeHandle(handle, context):
 
     # user = input("Enter Twitter Handle (Ex. @chriscao99): ")
 
-    tweets  = twitterAPI.user_timeline(screen_name=user, count=20)
+    tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
 
     populateDict(tweets)
     return last10
@@ -58,27 +58,24 @@ def negOrpos(tweet):
 def extractTweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
 
-def percentages(rating):
-    count = 0
-    for tweet in last10:
-        if last10[tweet] == rating:
-            count += 1
-    
-    print(count)
-    return (count / 20.0)*100
-
 def populateDict(tweets):
+    pos_count = 0
+    ntrl_count = 0
+    neg_count = 0
 
     for one in tweets:
         tweet_text = one.text
-        last10[i] = negOrpos(extractTweet(tweet_text))
-        i += 1
+        rating = negOrpos(extractTweet(tweet_text))
+        if rating == 1:
+            pos_count += 1
+        else if rating == 0:
+            ntrl_count += 1
+        else:
+            neg_count += 1
 
-    last10['pos'] = percentages(1)
-    last10['neg'] = percentages(-1)
-    last10['ntrl'] = percentages(0)
-
-    print("successfully populated dictionary")
+    last10['pos'] = (pos_count / 10.0)*100
+    last10['neg'] = (ntrl_count / 10.0)*100
+    last10['ntrl'] = (neg_count / 10.0)*100
 
 if __name__ == "__main__":
     """
