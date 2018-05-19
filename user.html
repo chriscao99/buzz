@@ -39,6 +39,7 @@
                 padding-top: 100px;
                 padding-left:140px;
                 float:left;
+                margin-bottom:100px;
             }
             #ext_container.hide {
                 display:none;
@@ -47,6 +48,7 @@
                 padding-top: 95px;
                 padding-right:160px;
                 float:right;
+                margin-bottom:100px;
             }
             .search-container {
                 width: 300px;
@@ -103,9 +105,26 @@
             }
             #picture {
                 margin-left: 180px;
+                padding-right: 40px;
             }
             #avi.hide {
                 display:none;
+            }
+            #userinfo {
+                margin-left:400px;
+                margin-top:70px;
+                margin-left: 430px;
+                
+            }
+            #user {
+                background-color: #edf3f8;
+            }
+            h1 {
+                margin-bottom: 0;
+            }
+            h2 {
+                padding-top:0;
+                padding-bottom:40px;
             }
 
             
@@ -127,14 +146,22 @@
 
             </div>
         </header>
-        <br> <br> <br> <br>
-        <div id="picture">
-            <img id="avi" alt="Avatar" height="180px" width="180px" class="hide">
+        <div id="user">
+            <br> <br> 
+            <div id="picture">
+                <img id="avi" alt="Avatar" height="180px" width="180px" class="hide">
+            </div>
+            <br>
+            <div id="userinfo">
+                <h1>Barack Obama</h1>
+                <h2>@BarackObama</h2>
+            </div>
         </div>
         
-        <div id="user_container" style="height:330px; margin: auto; width: 500px;" class="hide"></div>
-        <div id="ext_container" style="height:330px; margin: auto; width: 500px;" class="hide"></div>
-            <h1>&nbsp;</h1>
+        <br>
+        <div id="graphs">
+            <div id="user_container" style="height:330px; margin: auto; width: 500px;" class="hide"></div>
+            <div id="ext_container" style="height:330px; margin: auto; width: 500px;" class="hide"></div>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         
             <!-- Adding pie chart -->
@@ -143,9 +170,12 @@
             <script src="https://code.highcharts.com/highcharts-3d.js"></script>
             <script src="https://code.highcharts.com/modules/exporting.js"></script>
             <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
+        </div>
+        
+        <br> <br> <br>
 
             <script src="user.js"></script>
+            
             
     </body>    
 </html>
