@@ -45,7 +45,7 @@ def takeHandle(handle, context):
 
     populateDictUser(tweets)
     populateDictExt(external)
-    data['avi']=twitterAPI.get_user(screen_name=user).profile_image_url_https.replace("normal", "400x400") #get larger avi
+    populateDictUserInfo(user)
 
     return data
 
@@ -112,6 +112,12 @@ def populateDictExt(ext):
         data['ext_pos'] = int((pos_count / float(total_counted))*100)
         data['ext_neg'] = int((neg_count / float(total_counted))*100)
         data['ext_ntrl'] = int((ntrl_count / float(total_counted))*100)
+
+def populateDictUserInfo(user):
+    userobj = twitterAPI.get_user(screen_name=user)
+    data['avi']=userobj.profile_image_url_https.replace("normal", "400x400") #get larger avi
+    data['name']=userobj.name
+    
 
 if __name__ == "__main__":
     """
