@@ -26,12 +26,6 @@ function display(user) {
     }
 
   });
-
-  //e.preventDefault();
-
-//   setTimeout(function(){
-//     hideGraph();
-//   }, 20000);
 };
 
 function displayUserGraph(pos, neg, ntrl) {

@@ -81,9 +81,9 @@ def populateDictUser(tweets):
             neg_count += 1
             total_counted += 1.0
 
-    data['user_pos'] = (pos_count / total_counted)*100
-    data['user_neg'] = (neg_count / total_counted)*100
-    data['user_ntrl'] = (ntrl_count / total_counted)*100
+    data['user_pos'] = int((pos_count / total_counted)*100)
+    data['user_neg'] = int((neg_count / total_counted)*100)
+    data['user_ntrl'] = int((ntrl_count / total_counted)*100)
 
 def populateDictExt(ext):
     pos_count = 0
@@ -108,9 +108,9 @@ def populateDictExt(ext):
         data['valid'] = -1
     else:
         data['valid'] = 1
-        data['ext_pos'] = (pos_count / float(total_counted))*100
-        data['ext_neg'] = (neg_count / float(total_counted))*100
-        data['ext_ntrl'] = (ntrl_count / float(total_counted))*100
+        data['ext_pos'] = int((pos_count / float(total_counted))*100)
+        data['ext_neg'] = int((neg_count / float(total_counted))*100)
+        data['ext_ntrl'] = int((ntrl_count / float(total_counted))*100)
 
 if __name__ == "__main__":
     """
