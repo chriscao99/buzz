@@ -34,12 +34,12 @@ def takeHandle(handle, context):
     # user = input("Enter Twitter Handle (Ex. @chriscao99): ")
 
     tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
-
     external = twitterAPI.search(q=user, rpp=20, count=50)
+    userobj = twitterAPI.get_user(screen_name=user)
 
     populateDictUser(tweets)
     populateDictExt(external)
-    populateDictUserInfo(user)
+    populateDictUserInfo(userobj)
 
     return data
 
@@ -107,8 +107,7 @@ def populateDictExt(ext):
         data['ext_neg'] = int((neg_count / float(total_counted))*100)
         data['ext_ntrl'] = int((ntrl_count / float(total_counted))*100)
 
-def populateDictUserInfo(user):
-    userobj = twitterAPI.get_user(screen_name=user)
+def populateDictUserInfo(userobj):
     data['avi']=userobj.profile_image_url_https.replace("normal", "400x400") #get larger avi
     data['name']=userobj.name
     data['handle']= "@" + userobj.screen_name
