@@ -8,12 +8,6 @@ import numpy
 from textblob import TextBlob
 import re
 
-#Imports for visualizations
-# from IPython.display import display
-# import matplotlib.pyplot as plot
-# import seaborn as sbn
-
-#Uses Twitter credentials to set up Tweepy in order to access tweets
 def api_setup():
 
     API_KEY = os.environ['API_KEY']
@@ -117,7 +111,8 @@ def populateDictUserInfo(user):
     userobj = twitterAPI.get_user(screen_name=user)
     data['avi']=userobj.profile_image_url_https.replace("normal", "400x400") #get larger avi
     data['name']=userobj.name
-    
+    data['handle']= "@" + userobj.screen_name
+
 
 if __name__ == "__main__":
     """
