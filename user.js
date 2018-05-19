@@ -19,6 +19,7 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
+        document.getElementById("avi").src=data.avi;
         displayUserGraph(data.user_pos, data.user_neg, data.user_ntrl);
         if (data.valid == 1) {
             displayExtGraph(data.ext_pos, data.ext_neg, data.ext_ntrl);

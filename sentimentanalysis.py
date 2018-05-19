@@ -45,7 +45,7 @@ def takeHandle(handle, context):
 
     populateDictUser(tweets)
     populateDictExt(external)
-    data['avi']=twitterAPI.get_user(screen_name=user).profile_image_url
+    data['avi']=twitterAPI.get_user(screen_name=user).profile_image_url_https
 
     return data
 
