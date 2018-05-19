@@ -1,11 +1,13 @@
 var m = $('h1'),
     user_chart = document.getElementById('user_container'),
     ext_chart = document.getElementById('ext_container'),
+    avi = document.getElementById('avi'),
     API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
     handle = ''
+
 window.onload = function() {
-    var url = document.location.href,
-    user = url.split('=')[1].split('&');
+    var url = decodeURIComponent(document.location.href);
+        user = url.split('=')[1].split('&');
     handle = user[0];
     document.title = handle;
     display(handle);
@@ -19,7 +21,8 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
-        document.getElementById("avi").src=data.avi;
+        avi.src=data.avi;
+        avi.style.display="block";
         displayUserGraph(data.user_pos, data.user_neg, data.user_ntrl);
         if (data.valid == 1) {
             displayExtGraph(data.ext_pos, data.ext_neg, data.ext_ntrl);

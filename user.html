@@ -96,12 +96,16 @@
                 -moz-border-radius: 100px;
                 border:2px solid white;
                 padding: 5px;
+                float:left;
                 /* float:left; */
                 /* margin: 50px; */
                 /* padding-left: 100px; */
             }
             #picture {
                 margin-left: 180px;
+            }
+            #avi.hide {
+                display:none;
             }
 
             
@@ -115,7 +119,7 @@
                 <div class="logo">
                     <a href="index.html">buzz</a>
                 </div>
-                <form class="search-container" action="user.html" method="GET">
+                <form class="search-container" accept-charset="UTF-8" action="user.html" method="GET">
                     <input type="text" name="user" id="search-bar" placeholder="Search for another user">
                     <input type="image" class="search-icon" src="search-icon.png" />
                     <!-- <a action="user.html"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a> -->
@@ -125,7 +129,7 @@
         </header>
         <br> <br> <br> <br>
         <div id="picture">
-            <img id="avi" alt="Avatar" height="180px" width="180px">
+            <img id="avi" alt="Avatar" height="180px" width="180px" class="hide">
         </div>
         
         <div id="user_container" style="height:330px; margin: auto; width: 500px;" class="hide"></div>
