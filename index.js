@@ -27,6 +27,7 @@ a.on('click', function(e){
 
 var API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
 f.submit(function(e){
+  img.src('progress.gif');
   p.html('');
   $.ajax({
     type: 'POST',
