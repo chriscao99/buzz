@@ -4,6 +4,7 @@ var s = $('input'),
     m = $('h4'),
     p = $('p');
     chart = document.getElementById('container');
+    img = document.getElementById('loading');
 
 s.focus(function(){
   if( f.hasClass('open') ) return;
@@ -27,8 +28,9 @@ a.on('click', function(e){
 
 var API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
 f.submit(function(e){
-  img.src('progress.gif');
   p.html('');
+  img.src="progress.gif";
+  // img.removeClass('hide');
   $.ajax({
     type: 'POST',
     url: API,

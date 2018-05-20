@@ -69,6 +69,9 @@
                 box-sizing: border-box;
                 position: relative;
             }
+            #loading.hide {
+                display:none;
+            }
             input[type="submit"]{
                 display: none !important;
             }
@@ -281,7 +284,7 @@
 
         <form>
             <input type="text" />
-            <img id="loading" alt="Loading gif">
+            <img id="loading" alt="Loading gif" class="hide">
             <div class="after"></div>
             <input type="submit" />
         </form>
