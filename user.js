@@ -1,7 +1,8 @@
-var m = $('h1'),
-    user_chart = document.getElementById('user_container'),
+var user_chart = document.getElementById('user_container'),
     ext_chart = document.getElementById('ext_container'),
     avi = document.getElementById('avi'),
+    nameField = $('h1'),
+    handleField = $('h2'),
     API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
     handle = ''
 
@@ -27,6 +28,8 @@ function display(user) {
         if (data.valid == 1) {
             displayExtGraph(data.ext_pos, data.ext_neg, data.ext_ntrl);
         }
+        nameField.html(data.name)
+        handleField.html(data.handle)
     }
 
   });
