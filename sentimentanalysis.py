@@ -111,7 +111,7 @@ def populateDictUserInfo(userobj):
     data['avi']=userobj.profile_image_url_https.replace("normal", "400x400") #get larger avi
     data['name']=userobj.name
     data['handle']= "@" + userobj.screen_name
-
+    data['banner'] = userobj.profile_banner_url
 
 if __name__ == "__main__":
     """
