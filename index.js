@@ -28,9 +28,13 @@ a.on('click', function(e){
 
 var API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
 f.submit(function(e){
+  f.addClass('explode');
   p.html('');
-  img.src="progress.gif";
-  // img.removeClass('hide');
+  // img.src="progress.gif";
+  
+  img.style.display = "block";
+  
+  
   $.ajax({
     type: 'POST',
     url: API,
@@ -50,7 +54,7 @@ f.submit(function(e){
   });
 
   e.preventDefault();
-  f.addClass('explode');
+  
 
   // setTimeout(function(){
   //   hideGraph();
