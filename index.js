@@ -34,7 +34,7 @@ f.submit(function(e){
   setTimeout(function(){
     img.style.display = "block";
     
-  }, 100);
+  }, 300);
   
   // img.src="progress.gif";
   
