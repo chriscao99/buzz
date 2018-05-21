@@ -24,7 +24,7 @@ function display(user) {
 
     success: function(data){
         user_box.style.backgroundImage="url('" + data.banner + "')";
-        console.log("url('" + data.banner + "')");
+        
         avi.src=data.avi;
         avi.style.display="block";
         displayUserGraph(data.user_pos, data.user_neg, data.user_ntrl);
