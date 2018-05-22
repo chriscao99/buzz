@@ -24,7 +24,7 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
-        // dark.style.display="block";
+        dark.style.display="block";
         // user_box.style.display="block";
         user_box.src= data.banner;
         // $('banner').css({marginTop: '-=400px'});
