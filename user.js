@@ -1,6 +1,6 @@
 var user_chart = document.getElementById('user_container'),
     ext_chart = document.getElementById('ext_container'),
-    user_box = document.getElementById('user'),
+    user_box = document.getElementById('banner'),
     avi = document.getElementById('avi'),
     nameField = $('h1'),
     handleField = $('h2'),
@@ -23,7 +23,7 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
-        user_box.style.backgroundImage="url('" + data.banner + "')";
+        user_box.src= data.banner;
         
         avi.src=data.avi;
         avi.style.display="block";
