@@ -17,6 +17,10 @@
         <h1>Welcome to Buzz</h1>
         
         <style>
+            body {
+                margin:0;
+            }
+            /* start of header styling */
             @font-face {
                 font-family: TimeBurner;
                 src: url(timeburnerbold.ttf);
@@ -32,18 +36,27 @@
             .contents {
                 width: 80%;
                 margin: 0 auto;
+                margin-top:5px;
             }
             a {
                 font-family: TimeBurner;
                 text-decoration: none;
                 color: white;
                 letter-spacing: 0.5px;
-                font-size: 63px;
+                font-size: 60px;
 
             }
             .logo {
                 float: left;
                 padding-bottom: 10px;
+            }
+            /* end of header styling */
+
+            /* start of main container styling */
+            #background_image {
+                width:100%;
+                height:350px;
+                object-fit: cover;
             }
             h1 {
                 text-align: center;
@@ -315,24 +328,27 @@
                     color: #333333;
                 }
             }
-              </style>
+            /* end of main container styling */
+            </style>
           
     </head>
 
-    <body background="blue.jpg">
-        
-        <br> <br>
-        <!-- <div id="container" style="height:330px; margin: auto; width: 500px;" class="hide"></div> -->
-        <img src="progress.gif" id="loading" alt="Loading gif" class="hide">
-        <form>
-            <input type="text" />
-            <!-- <img src="progress.gif" id="loading" alt="Loading gif" class="hide"> -->
-            <div class="after"></div>
-            <input type="submit" />
-        </form>
-            
-            <h4>&nbsp;</h4>
+    <body>
+        <div id="main_container">
+            <img id="background_image" src="honey.png" alt="">
+            <br> <br>
+                <!-- <div id="container" style="height:330px; margin: auto; width: 500px;" class="hide"></div> -->
+            <img src="progress.gif" id="loading" alt="Loading gif" class="hide">
+            <form>
+                <input type="text" />
+                <!-- <img src="progress.gif" id="loading" alt="Loading gif" class="hide"> -->
+                <div class="after"></div>
+                    <input type="submit" />
+            </form>
+            <br>
             <p>Click to enter a Twitter handle, Enter to submit</p>
+        </div>
+        
             <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
             
