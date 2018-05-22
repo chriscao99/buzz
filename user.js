@@ -2,6 +2,7 @@ var user_chart = document.getElementById('user_container'),
     ext_chart = document.getElementById('ext_container'),
     user_box = document.getElementById('banner'),
     avi = document.getElementById('avi'),
+    dark = document.getElementById('darkening'),
     nameField = $('h1'),
     handleField = $('h2'),
     API = 'https://9cowd768ci.execute-api.us-east-1.amazonaws.com/prod/entries';
@@ -23,10 +24,11 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
+        user_box.style.display="block";
         user_box.src= data.banner;
-        
         avi.src=data.avi;
         avi.style.display="block";
+        dark.style.display="block";
         displayUserGraph(data.user_pos, data.user_neg, data.user_ntrl);
         if (data.valid == 1) {
             displayExtGraph(data.ext_pos, data.ext_neg, data.ext_ntrl);
