@@ -4,12 +4,47 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        <header>
+                <div class='contents'>
+                    <div class="logo">
+                        <a href="index.html">buzz</a>
+                    </div>
+        
+                </div>
+        </header>
         <br> <br> <br> <br> <br> 
         <title>Buzz</title>
         <h1>Welcome to Buzz</h1>
         
         <style>
+            @font-face {
+                font-family: TimeBurner;
+                src: url(timeburnerbold.ttf);
+            }
+            header {
+                background: #00aced;
+                margin: 0 auto;
+                margin-left:-8px;
+                margin-right:-8px;
+                margin-top:-110px;
+                height: 72px;
+            }
+            .contents {
+                width: 80%;
+                margin: 0 auto;
+            }
+            a {
+                font-family: TimeBurner;
+                text-decoration: none;
+                color: white;
+                letter-spacing: 0.5px;
+                font-size: 63px;
 
+            }
+            .logo {
+                float: left;
+                padding-bottom: 10px;
+            }
             h1 {
                 text-align: center;
                 font-size: 60px;
@@ -285,6 +320,7 @@
     </head>
 
     <body background="blue.jpg">
+        
         <br> <br>
         <!-- <div id="container" style="height:330px; margin: auto; width: 500px;" class="hide"></div> -->
         <img src="progress.gif" id="loading" alt="Loading gif" class="hide">
