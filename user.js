@@ -24,11 +24,13 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
-        user_box.style.display="block";
+        // dark.style.display="block";
+        // user_box.style.display="block";
         user_box.src= data.banner;
+        // $('banner').css({marginTop: '-=400px'});
         avi.src=data.avi;
         avi.style.display="block";
-        dark.style.display="block";
+        
         displayUserGraph(data.user_pos, data.user_neg, data.user_ntrl);
         if (data.valid == 1) {
             displayExtGraph(data.ext_pos, data.ext_neg, data.ext_ntrl);
