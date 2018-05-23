@@ -48,7 +48,7 @@ f.submit(function(e){
     contentType: "application/json",
 
     success: function(data){
-      window.location.href = "/buzz-front-end/user.html?user=" + s.val();
+      window.location.href = "user.html?user=" + s.val();
     }
 
   });
