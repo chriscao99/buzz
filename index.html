@@ -77,8 +77,9 @@
                 padding-top: 100px;
             }
             #loading {
-                margin-left:625px;
+                margin-left:565px;
                 margin-right:625px;
+                margin-top:-190px;
                 height: 175px;
                 width: 175px;
             }
@@ -93,7 +94,7 @@
             }
             
             /* end of main container styling */
-            
+
             /* Search bar styling */
             h4 {
                 color: #fff;
@@ -105,8 +106,8 @@
                 top: -25px;
                 margin: 0;
                 font-weight: normal;
-                }
-                h4.show {
+            }
+            h4.show {
                 animation: alert 0.18s ease-in-out;
                 animation-fill-mode: forwards;
                 }
@@ -120,19 +121,19 @@
                 100% {
                     transform: scale(1);
                 }
-                }
-                form {
+            }
+            form {
 
                 transition: all 0.15s;
-                }
-                form.explode {
+            }
+            form.explode {
                 transform: scale(1.4);
                 opacity: 0;
-                }
-                html {
+            }
+            html {
                 padding-top: 100px;
-                }
-                form {
+            }
+            form {
                 width: 36px;
                 height: 36px;
                 margin: 0 auto;
@@ -140,14 +141,14 @@
                 display: block;
                 box-sizing: border-box;
                 position: relative;
-                }
-                input[type="submit"]{
+            }
+            input[type="submit"]{
                 display: none !important;
-                }
-                input {
+            }
+            input {
                 width: 100%;
-                }
-                input {
+            }
+            input {
                 background: none;
                 border: 3px solid #fff;
                 border-radius: 26px;
@@ -157,23 +158,23 @@
                 color: #fff;
                 z-index: 2;
                 position: relative;
-                }
-                input:focus {
+            }
+            input:focus {
                 outline: none;
-                }
-                .after {
+            }
+            .after {
                 width: 36px;
                 height: 36px;
                 position: absolute;
                 top: 1px;
                 right: 0;
                 z-index: 1;
-                }
-                form.open .after {
+            }
+            form.open .after {
                 cursor: pointer;
-                }
-                .after:before,
-                .after:after {
+            }
+            .after:before,
+            .after:after {
                 content: '';
                 width: 13px;
                 height: 3px;
@@ -181,73 +182,73 @@
                 border-radius: 3px;
                 position: absolute;
                 transform-origin: 100% 100%;
-                }
-                .after:after{
+            }
+            .after:after{
                 bottom: -3px;
                 right: -3px;
                 transform: rotate(45deg);
-                }
-                .after:before {
+            }
+            .after:before {
                 top: -3px;
                 right: -3px;
                 transform: rotate(-45deg);
                 opacity: 0;
-                }
-                form,
-                form .after,
-                form .after:before,
-                form .after:after {
+            }
+            form,
+            form .after,
+            form .after:before,
+            form .after:after {
                 animation-duration: 1.1s;
                 animation-fill-mode: forwards;
-                }
-                form.in {
+            }
+            form.in {
                 animation-name: expand;
-                }
-                form.in .after:before {
+            }
+            form.in .after:before {
                 animation-name: beforemagic;
-                }
-                form.in .after:after {
+            }
+            form.in .after:after {
                 animation-name: aftermagic;
-                }
+            }
 
-                form.close,
-                form.close .after,
-                form.close .after:before,
-                form.close .after:after {
+            form.close,
+            form.close .after,
+            form.close .after:before,
+            form.close .after:after {
                 animation-direction: reverse;
-                }
-                form.close {
+            }
+            form.close {
                 animation-name: expand;
-                }
-                form.close .after:before {
+            }
+            form.close .after:before {
                 animation-name: beforemagic;
-                }
-                form.close .after:after {
+            }
+            form.close .after:after {
                 animation-name: aftermagic;
-                }
+            }
 
-                /* Hold final focused state
-                ****************************/
-                form.open {
+            /* Hold final focused state */
+
+            form.open {
                 width: 250px;
                 color: #fff;
-                }
-                form.open .after {
+            }
+            form.open .after {
                 z-index: 3;
-                }
-                form.open .after:before {
+            }
+            form.open .after:before {
                 width: 20px;
                 top: 9px;
                 right: 13px;
                 opacity: 1;
-                }
-                form.open .after:after {
+            }
+            form.open .after:after {
                 width: 20px;
                 bottom: 10px;
                 right: 15px;
-                }
+            }
 
-                @keyframes aftermagic {
+            @keyframes aftermagic {
                 0%   {}
                 10% {
                     width: 24px;
@@ -291,8 +292,8 @@
                     bottom: 10px;
                     right: 15px;
                 }
-                }
-                @keyframes beforemagic {
+            }
+            @keyframes beforemagic {
                 0%   {}
                 50% {
                     opacity: 0;
@@ -319,8 +320,8 @@
                     right: 13px;
                     opacity: 1;
                 }
-                }
-                @keyframes expand {
+            }
+            @keyframes expand {
                     0%   {
                     color: transparent;
                     }
@@ -337,7 +338,7 @@
                     width: 250px;
                     color: #fff;
                     }
-                }
+            }
             </style>
           
     </head>
