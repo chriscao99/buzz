@@ -25,7 +25,8 @@ function display(user) {
 
     success: function(data){
         if (data.errorType != null) {
-            console.log("error caught");
+            console.log("Error caught");
+            window.location.href = "error.html";
         }
         dark.style.display="block";
         // user_box.style.display="block";
