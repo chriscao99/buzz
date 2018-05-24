@@ -24,6 +24,9 @@ function display(user) {
     contentType: "application/json",
 
     success: function(data){
+        if (data.errorType != null) {
+            console.log("error caught");
+        }
         dark.style.display="block";
         // user_box.style.display="block";
         user_box.src= data.banner;
