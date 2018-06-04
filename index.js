@@ -36,7 +36,6 @@ f.submit(function(e){
     
   }, 300);
   
-  // img.src="progress.gif";
   
 
   
