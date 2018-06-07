@@ -1,4 +1,4 @@
-var title = $('h1')
+var title = $('h1'),
     result = '';
 
 window.onload = function() {
