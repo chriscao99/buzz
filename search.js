@@ -8,5 +8,5 @@ window.onload = function() {
     result = user[0];
     result = result.replace('+', ' ');
     document.title = result;
-    title.html("Search Results for " + result);
+    title.html("Search Results for " + '"' + result + '"');
 }
