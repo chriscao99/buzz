@@ -29,9 +29,7 @@ function display(user) {
             window.location.href = "error.html";
         }
         dark.style.display="block";
-        // user_box.style.display="block";
         user_box.src= data.banner;
-        // $('banner').css({marginTop: '-=400px'});
         avi.src=data.avi;
         avi.style.display="block";
         
