@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "${workspaceFolder}/virt/bin/python"
+    "python.pythonPath": "${workspaceFolder}/virt/bin/python",
+    "editor.minimap.enabled": false
 }
