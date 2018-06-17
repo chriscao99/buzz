@@ -20,5 +20,5 @@ window.onload = function() {
 }
 
 function populateCards(user) {
-    var images = document.getElementById("card").getElementsByTagName()
+    var images = document.getElementById("card").getElementsByTagName();
 }
