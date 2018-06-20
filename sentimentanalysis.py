@@ -23,24 +23,29 @@ def api_setup():
     return api
 
 data = {}
-
+query = {}
 def takeHandle(handle, context):
     """
     THIS IS THE SECTION OF CODE LAMBDA RUNS
     """
-    user = handle['user']
+    user = handle.get('user', "empty")
+    query = handle.get('query', "empty")
     twitterAPI = api_setup()
 
+    if user != "empty": 
+        tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
+        external = twitterAPI.search(q=user, rpp=20, count=50)
+        userobj = twitterAPI.get_user(screen_name=user)
 
-    tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
-    external = twitterAPI.search(q=user, rpp=20, count=50)
-    userobj = twitterAPI.get_user(screen_name=user)
-
-    populateDictUser(tweets)
-    populateDictExt(external)
-    populateDictUserInfo(userobj)
-
-    return data
+        populateDictUser(tweets)
+        populateDictExt(external)
+        populateDictUserInfo(userobj)
+        
+        return data
+    elif query != "empty":
+        relatedusers = twitterAPI.search_users(q=query, per_page=1)
+        populateDictRelatedUsers(relatedusers, 4)
+        return query
 
 #Sentiment analysis portion
 
@@ -111,6 +116,16 @@ def populateDictUserInfo(userobj):
     data['name']=userobj.name
     data['handle']= "@" + userobj.screen_name
     data['banner'] = userobj.profile_banner_url
+
+
+def populateDictRelatedUsers(users, num):
+    for i in range(4):
+        query[i] = dict()
+        query[i]['avi'] = users[i].profile_image_url_https
+        query[i]['name'] = users[i].name
+        query[i]['handle'] = users[i].screen_name
+        query[i]['followers'] = users[i].followers_count
+
 
 if __name__ == "__main__":
     """
