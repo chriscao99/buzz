@@ -23,7 +23,8 @@ def api_setup():
     return api
 
 data = {}
-query = {}
+queryData = {}
+
 def takeHandle(handle, context):
     """
     THIS IS THE SECTION OF CODE LAMBDA RUNS
@@ -45,7 +46,7 @@ def takeHandle(handle, context):
     elif query != "empty":
         relatedusers = twitterAPI.search_users(q=query, per_page=1)
         populateDictRelatedUsers(relatedusers, 4)
-        return query
+        return queryData
 
 #Sentiment analysis portion
 
@@ -120,11 +121,11 @@ def populateDictUserInfo(userobj):
 
 def populateDictRelatedUsers(users, num):
     for i in range(4):
-        query[i] = dict()
-        query[i]['avi'] = users[i].profile_image_url_https
-        query[i]['name'] = users[i].name
-        query[i]['handle'] = users[i].screen_name
-        query[i]['followers'] = users[i].followers_count
+        queryData[i] = dict()
+        queryData[i]['avi'] = users[i].profile_image_url_https
+        queryData[i]['name'] = users[i].name
+        queryData[i]['handle'] = users[i].screen_name
+        queryData[i]['followers'] = users[i].followers_count
 
 
 if __name__ == "__main__":
