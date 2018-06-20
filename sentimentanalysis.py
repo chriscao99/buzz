@@ -31,7 +31,6 @@ def takeHandle(handle, context):
     user = handle['user']
     twitterAPI = api_setup()
 
-    # user = input("Enter Twitter Handle (Ex. @chriscao99): ")
 
     tweets  = twitterAPI.user_timeline(screen_name=user, count=10)
     external = twitterAPI.search(q=user, rpp=20, count=50)
