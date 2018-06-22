@@ -19,7 +19,6 @@ window.onload = function() {
     var images = document.getElementsByTagName("a");
 
     var tags = document.getElementsByTagName("span");
-    //console.log(tags);
     console.log(result);
     changeImages(result);
 }
