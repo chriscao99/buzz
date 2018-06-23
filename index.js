@@ -36,10 +36,6 @@ f.submit(function(e){
     
   }, 300);
   
-  
-
-  
-  
   $.ajax({
     type: 'POST',
     url: API,
